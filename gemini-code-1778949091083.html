@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravity Falls: Weirdmageddon! The Movie</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        h1 {
+            color: #66fcf1;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(102, 252, 241, 0.3);
+        }
+
+        .subtitle {
+            color: #45f3ff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1000px;
+            background: #1f2833;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            border: 1px solid #2f3b4c;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            background: #000;
+            aspect-ratio: 16 / 9;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .movie-details {
+            padding: 30px;
+        }
+
+        .meta-tags {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: #0b0c10;
+            color: #66fcf1;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #66fcf1;
+        }
+
+        .synopsis {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #a4a7ab;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: #45a29e;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Gravity Falls</h1>
+        <div class="subtitle">Weirdmageddon! The Movie (2026)</div>
+    </header>
+
+    <main class="main-container">
+        <!-- Video Player -->
+        <div class="video-wrapper">
+            <video controls preload="metadata" poster="https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1000">
+                <!-- Direct link to your local Linux directory file -->
+                <source src="file:///home/ricardo/V%C3%ADdeos/(2026)%20Gravity%20Falls%20-%20Weirdmageddon!%20The%20Movie" type="video/mp4">
+                <!-- Fallback if file extension is different (e.g. mkv) -->
+                <source src="file:///home/ricardo/V%C3%ADdeos/(2026)%20Gravity%20Falls%20-%20Weirdmageddon!%20The%20Movie.mkv" type="video/mp4">
+                Your browser does not support the video tag or cannot access local files directly.
+            </video>
+        </div>
+
+        <!-- Movie Info -->
+        <div class="movie-details">
+            <div class="meta-tags">
+                <span class="tag">2026</span>
+                <span class="tag">Animation</span>
+                <span class="tag">Mystery</span>
+                <span class="tag">Sci-Fi</span>
+            </div>
+            <h2>Synopsis</h2>
+            <p class="synopsis">
+                The ultimate battle for Gravity Falls reaches its cinematic climax. When reality unravels and weirdness takes over, the mystery twins and the town must stand together to face the ultimate cosmic threat.
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        Local Stream Client &bull; Built for Gravity Falls Fan Projects
+    </footer>
+
+</body>
+</html>
