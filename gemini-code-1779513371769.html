@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FANFIX | Your Studio</title>
+  <style>
+    /* General Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #0b0f19;
+      color: white;
+      min-height: 100vh;
+      transition: background-color 0.4s ease;
+    }
+
+    body.theater-mode {
+      background: #000000;
+    }
+
+    /* Navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(11, 15, 25, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .brand-highlight {
+      color: #e11d48;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 40px;
+      background: linear-gradient(to right, #0b0f19 20%, transparent), 
+                  linear-gradient(to top, #0b0f19 5%, transparent),
+                  url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1925&q=80') center/cover;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      max-width: 600px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+
+    .hero-buttons button {
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      margin-right: 10px;
+      border-radius: 8px;
+    }
+
+    .btn-primary {
+      background: #e11d48;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #be123c;
+    }
+
+    /* Catalog / Movie Grid */
+    .catalog {
+      padding: 40px;
+    }
+
+    .catalog h2 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      border-left: 4px solid #e11d48;
+      padding-left: 10px;
+    }
+
+    .movie-grid {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding-bottom: 20px;
+    }
+
+    .movie-card {
+      min-width: 200px;
+      height: 300px;
+      background: #1e293b;
+      border-radius: 8px;
+      display: flex;
+      align-items: flex-end;
+      padding: 15px;
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.2s;
+      border: 1px solid #334155;
+    }
+
+    .movie-card:hover {
+      transform: scale(1.05);
+      border-color: #e11d48;
+    }
+
+    .movie-card h3 {
+      font-size: 1rem;
+      z-index: 2;
+    }
+
+    /* Card Backgrounds */
+    .card-1 { background: linear-gradient(to top, #0f172a, transparent), #059669; }
+    .card-2 { background: linear-gradient(to top, #0f172a, transparent), #2563eb; }
+    .card-3 { background: linear-gradient(to top, #0f172a, transparent), #d97706; }
+    .card-4 { background: linear-gradient(to top, #0f172a, transparent), #7c3aed; }
+
+    /* Local Video Player */
+    .player-section {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #0f172a;
+      border-top: 1px solid #1e293b;
+    }
+
+    .player-container {
+      width: 100%;
+      max-width: 1000px;
+      background: #111827;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      border: 1px solid #1f2937;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 12px;
+      background: black;
+    }
+
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .volume-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #1e293b;
+      padding: 8px 12px;
+      border-radius: 10px;
+    }
+
+    input[type="file"] {
+      background: #1e293b;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button.control-btn {
+      background: #334155;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button.control-btn:hover { background: #475569; }
+    .theater-btn { background: #4f46e5 !important; }
+    .theater-btn:hover { background: #4338ca !important; }
+
+    /* Hide player elements in theater mode */
+    .theater-mode header,
+    .theater-mode .hero,
+    .theater-mode .catalog {
+      opacity: 0.1;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><span class="brand-highlight">FAN</span>FIX</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Originals</a></li>
+        <li><a href="#">My Studio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Gravity Falls - Weirdmageddon! The Movie</h1>
+    <p>The apocalypse has reached Gravity Falls. Prepare for the final battle in this original production.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="document.getElementById('player-area').scrollIntoView({behavior: 'smooth'})">
+        ▶ Watch Now
+      </button>
+    </div>
+  </section>
+
+  <section class="catalog">
+    <h2>Recently Added</h2>
+    <div class="movie-grid">
+      <div class="movie-card card-1"><h3>Diary of a Wimpy Kid: A New Story</h3></div>
+      <div class="movie-card card-2"><h3>Frame Studios Project</h3></div>
+      <div class="movie-card card-3"><h3>Animation Shorts</h3></div>
+      <div class="movie-card card-4"><h3>Original Soundtrack</h3></div>
+      <div class="movie-card card-1"><h3>Behind the Scenes</h3></div>
+    </div>
+  </section>
+
+  <section class="player-section" id="player-area">
+    <h2 style="margin-bottom: 20px;">Local Player</h2>
+    <div class="player-container">
+      <video id="videoPlayer" controls>
+        <source src="file:///home/ricardo/V%C3%ADdeos/(2026)%20Gravity%20Falls%20-%20Weirdmageddon!%20The%20Movie" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="controls">
+        <input type="file" id="movieInput" accept="video/*" />
+        <button class="control-btn" onclick="playVideo()">▶ Play</button>
+        <button class="control-btn" onclick="pauseVideo()">⏸ Pause</button>
+        
+        <div class="volume-container">
+          <span>🔊</span>
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1" onchange="changeVolume()" />
+        </div>
+
+        <button class="control-btn" onclick="fullscreenVideo()">⛶ Fullscreen</button>
+        <button class="control-btn theater-btn" onclick="toggleTheater()">🎥 Theater Mode</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const movieInput = document.getElementById('movieInput');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const volumeSlider = document.getElementById('volumeSlider');
+
+    movieInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const videoURL = URL.createObjectURL(file);
+        videoPlayer.src = videoURL;
+        videoPlayer.load();
+      }
+    });
+
+    function playVideo() { videoPlayer.play(); }
+    function pauseVideo() { videoPlayer.pause(); }
+
+    function fullscreenVideo() {
+      if (videoPlayer.requestFullscreen) {
+        videoPlayer.requestFullscreen();
+      }
+    }
+
+    function changeVolume() {
+      videoPlayer.volume = volumeSlider.value;
+    }
+
+    function toggleTheater() {
+      document.body.classList.toggle('theater-mode');
+      
+      if(document.body.classList.contains('theater-mode')) {
+        document.getElementById('player-area').scrollIntoView({behavior: 'smooth'});
+      }
+    }
+  </script>
+</body>
+</html>
